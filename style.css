@@ -152,19 +152,19 @@ body, html {
     background: linear-gradient(var(--Gr), red, orange, yellow, green, indigo, blue);
 }
 .skyBluePink {
-    background: linear-gradient(var(--Gr), hsla(339, 100%, 55%, 1) 0%, hsla(197, 100%, 64%, 1) 100%);
+    background: linear-gradient(var(--Gr), hsla(339, 100%, 55%, 1), hsla(197, 100%, 64%, 1), hsla(339, 100%, 55%, 1));
 }
 .purpleGreen {
-    background: linear-gradient(var(--Gr), hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
+    background: linear-gradient(var(--Gr), hsla(270, 94%, 25%, 1), hsla(158, 94%, 49%, 1), hsla(270, 94%, 25%, 1));
 }
 .sunset {
-    background: linear-gradient(var(--Gr), hsla(141, 81%, 87%, 1) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 100%);
+    background: linear-gradient(var(--Gr), hsla(358, 82%, 71%, 1), hsla(141, 81%, 87%, 1), hsla(41, 88%, 75%, 1), hsla(358, 82%, 71%, 1));
 }
 .greenBlue{
-    background: linear-gradient(var(--Gr), hsla(136, 82%, 72%, 1) 0%, hsla(205, 84%, 36%, 1) 100%);
+    background: linear-gradient(var(--Gr), hsla(205, 84%, 36%, 1), hsla(136, 82%, 72%, 1), hsla(205, 84%, 36%, 1));
 }
 .yellowPink {
-    background: linear-gradient(var(--Gr), hsla(58, 77%, 50%, 1) 0%, hsla(281, 95%, 52%, 1) 100%);
+    background: linear-gradient(var(--Gr), hsla(281, 95%, 52%, 1), hsla(58, 77%, 50%, 1), hsla(281, 95%, 52%, 1));
 }
 /* constructing 3d dice from 2d flat planes */
 .inner.x {
