@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>RPG Dice /game</title> 
     <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Dice /game</title> 
 </head>
 <body>
-  <div class="container">
+  <div class="wrapper">
+  <div id="container">
     <div class="dice1">
       <div class="face front"> <!-- 1 -->
         <div class="border skyBluePink"></div>
@@ -221,13 +224,40 @@
     <div class="face inner y"></div>
     <div class="face inner z"></div>
     </div>
-
-    <button class="roll">
-        Roll Dice
-    </button>
     
   </div>
 </div>
+</div>
+<script>
+  // x = horizontal , y = vertical, down = left, up = right
+  var xDown = null, yDown = null, xUp = null, yUp = null;
+    document.getElementById('container').addEventListener('touchstart', touchstart);        
+    document.getElementById('container').addEventListener('touchmove', touchmove);
+    document.getElementById('container').addEventListener('touchend',  touchend);
+    function touchstart(evt) { const firstTouch = (evt.touches || evt.originalEvent.touches)[0]; xDown = firstTouch.clientX; yDown = firstTouch.clientY; }
+    function touchmove(evt) { if (!xDown || !yDown ) return; xUp = evt.touches[0].clientX; yUp = evt.touches[0].clientY; }
+    function touchend(evt) { 
+        var xDiff = xUp - xDown, yDiff = yUp - yDown;
+            //check if finger has moved
+        if (xUp === null) { 
+            return 
+            //check if left / right swipe
+        } if ((Math.abs(xDiff) > Math.abs(yDiff)) && (Math.abs(xDiff) > 100)) { 
+            if (xDiff < 0) //swipe left
+            console.log('swipe right')
+            else  // swipe right
+            console.log('swipe left')
+            // check if up / down swipe
+      } if ((Math.abs(yDiff) > Math.abs(xDiff)) && (Math.abs(yDiff) > 100)) { 
+            if (yDiff < 0) //swipe up
+            {rollRandom();
+            console.log('swipe up')}
+            else // swipe down
+            console.log('swipe down')
+        }
+        xDown = null, yDown = null, xUp = null, yUp = null;
+    }
+</script>
 <script src="script.js" type="text/javascript"></script>
 </body>
 </html>

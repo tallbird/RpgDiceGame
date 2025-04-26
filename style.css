@@ -1,33 +1,50 @@
-body {
-  font-size:.9em;
-  font-family:sans-serif;
-  background: linear-gradient(145deg, #16133a, #03172e);
+:root {
+    --diceBR: 5vw;
+    --diceW_H: 25vw;
+    --trans: 12.5vw; /* half of diceW_H */
+    --lilacGray: #495494;
+    --transDark: #4953684d;
+    --transLight: #606277b9;
+    --darkRed: rgb(43, 18, 22);
+    }
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
 }
-.container {
+.wrapper {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: linear-gradient(145deg, #16133a, #03172e);
+}
+#container {
     display: grid;
     position: absolute;
-    grid-template-columns: 100px 100px 100px;
-    grid-template-rows: 100px 100px 50px;
+    width: 93vw;
+    height: 60vw;
+    margin: 2vw;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: 
     "Dice1 Dice2 Dice3"
-    "Dice4 Dice5 Dice6"
-    ". RollBtn .";
-    gap: 40px;
+    "Dice4 Dice5 Dice6";
+    gap: 3vw;
     place-items: center;
-    width: 380px;
-    height: 320px;
-    padding: 20px;
-    border-radius: 30px;
-    background: #998da5;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    padding: 1.5vw;
+    border-radius: var(--diceBR);
+    background: var(--transDark);
+    box-shadow:inset 0 0 30px var(--transLight);
 }
 
 /* Dice Styles */
 .dice1, .dice2, .dice3, .dice4, .dice5, .dice6 {
     display: inline-grid;
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: var(--diceW_H);
+    height: var(--diceW_H);
     transform-style: preserve-3d;
     transition: 1s ease;
 }
@@ -51,33 +68,75 @@ body {
 }
 
 /* solid coloured background on each face */
-.face {
+.face, .face::before {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 15px;
-    background: #495494;
+    width: var(--diceW_H);
+    height: var(--diceW_H);
+    border-radius: var(--diceBR);
+    background: var(--lilacGray);
     transform-style: preserve-3d;
 }
 .face::before {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 15px;
-    background: #495494;
-    transform-style: preserve-3d;
     transform: translateZ(-1px);
 }
 /* gradient border */
 .border {
     content: '';
-    width: 96px;
-    height: 96px;
+    width: 24vw;
+    height: 24vw;
     margin-top: 2px;
     margin-left: 2px;
-    border-radius: 15px;
+    border-radius: var(--diceBR);
     backface-visibility: hidden;
     position: absolute;
+}
+ /* images on dice */
+ .icon {
+    position: absolute;
+    display: block;
+    margin-top: 4vw;
+    margin-left: 4vw;
+    width: 18vw;
+    height: 18vw;
+    filter: drop-shadow(0 0 0.75rem var(--darkRed));
+}
+.skillImg {
+    position: absolute;
+    display: block;
+    margin-top: 1vw;
+    margin-left: 1vw;
+    width: 22.5vw;
+    height: 22.5vw;
+    border-radius: var(--diceBR);
+    border: 1px solid var(--lilacGray);
+    box-shadow:inset 0 0 30px var(--lilacGray);
+}
+.shield {
+    background-image: url("./images/shield.svg");
+}
+.sword {
+    background-image: url("./images/sword.svg");
+}
+.cross {
+    background-image: url("./images/cross.svg");
+}
+.ice {
+    background-image: url("./images/mageFrsk8.png");
+}
+.fire {
+    background-image: url("./images/mageFlsk10.png");
+}
+.thunder {
+    background-image: url("./images/S1sk4.png");
+}
+.poison {
+    background-image: url("./images/bardH9.jpg");
+}
+.swirl {
+    background-image: url("./images/ult4.jpg");
+}
+.priest {
+    background-image: url("./images/priestG5.jpg");
 }
 .rainbow {
     background: linear-gradient(140deg, red, orange, yellow, green, indigo, blue);
@@ -105,84 +164,20 @@ body {
     transform: rotateX(90deg);
 }
 .front  {
-    transform: translateZ(50px);
+    transform: translateZ(var(--trans));
 }
 .back {
-    transform: rotateX(-180deg) translateZ(50px);
+    transform: rotateX(-180deg) translateZ(var(--trans));
 }
 .right {
-    transform: rotateY(90deg) translateZ(50px);
+    transform: rotateY(90deg) translateZ(var(--trans));
 }
 .left {
-    transform: rotateY(-90deg) translateZ(50px);
+    transform: rotateY(-90deg) translateZ(var(--trans));
 }
 .top {
-    transform: rotateX(90deg) translateZ(50px);
+    transform: rotateX(90deg) translateZ(var(--trans));
 }
 .bottom {
-    transform: rotateX(-90deg) translateZ(50px);
-}
-
-/* Roll Button styles */
-.roll {
-    grid-area: RollBtn;
-    cursor: pointer;
-    color: #b33951;
-    padding: 6px 12px;
-    border-radius: 3px;
-    font: 700 16px 'Montserrat';
-    border: 2px solid #b33951;
-    transition: .4s;
-}
-.roll:hover {
-    color: #fff;
-    background: #b33951;
-}
- /* images on dice */
-.icon {
-    position: absolute;
-    display: block;
-    margin-top: 15px;
-    margin-left: 15px;
-    width: 70px;
-    height: 70px;
-    filter: drop-shadow(0 0 0.75rem rgb(43, 18, 22));
-}
-.shield {
-    background-image: url("./images/shield.svg");
-}
-.sword {
-    background-image: url("./images/sword.svg");
-}
-.cross {
-    background-image: url("./images/cross.svg");
-}
-.skillImg {
-    position: absolute;
-    display: block;
-    margin-top: 4px;
-    margin-left: 4px;
-    width: 90px;
-    height: 90px;
-    border-radius: 15px;
-    border: 1px solid #495494;
-    box-shadow:inset 0 0 30px #495494ee;
-}
-.ice {
-    background-image: url("./images/mageFrsk8.png");
-}
-.fire {
-    background-image: url("./images/mageFlsk10.png");
-}
-.thunder {
-    background-image: url("./images/S1sk4.png");
-}
-.poison {
-    background-image: url("./images/bardH9.jpg");
-}
-.swirl {
-    background-image: url("./images/ult4.jpg");
-}
-.priest {
-    background-image: url("./images/priestG5.jpg");
+    transform: rotateX(-90deg) translateZ(var(--trans));
 }
