@@ -97,6 +97,7 @@ body, html {
     backface-visibility: hidden;
     position: absolute;
     animation: gradientBorderRotate 3s linear infinite;
+    animation-play-state: running;
 }
  /* images on dice */
  .icon {
@@ -107,6 +108,7 @@ body, html {
     width: 18vw;
     height: 18vw;
     filter: drop-shadow(0 0 0.75rem var(--darkRed));
+    pointer-events: none; 
 }
 .skillImg {
     position: absolute;

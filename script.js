@@ -76,3 +76,14 @@ function rollRandom() {
 
     return random;
 }
+
+// toggle border animation on/off on dice click
+document.querySelectorAll('.skillImg').forEach( item => {
+    item.onclick = function toggleAnimation() {
+        if (this.parentElement.children[0].style.animationPlayState == "running" || this.parentElement.children[0].style.animationPlayState == "") {
+            this.parentElement.children[0].style.animationPlayState = "paused";
+        } else {
+            this.parentElement.children[0].style.animationPlayState = "running";
+        }
+    }
+});
