@@ -96,6 +96,7 @@ body, html {
     border-radius: var(--diceBR);
     backface-visibility: hidden;
     position: absolute;
+    animation: gradientBorderRotate 3s linear infinite;
 }
  /* images on dice */
  .icon {
@@ -146,22 +147,22 @@ body, html {
     background-image: url("./images/priestG5.jpg");
 }
 .rainbow {
-    background: linear-gradient(140deg, red, orange, yellow, green, indigo, blue);
+    background: linear-gradient(var(--Gr), red, orange, yellow, green, indigo, blue);
 }
 .skyBluePink {
-    background: linear-gradient(140deg, hsla(339, 100%, 55%, 1) 0%, hsla(197, 100%, 64%, 1) 100%);
+    background: linear-gradient(var(--Gr), hsla(339, 100%, 55%, 1) 0%, hsla(197, 100%, 64%, 1) 100%);
 }
 .purpleGreen {
-    background: linear-gradient(140deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
+    background: linear-gradient(var(--Gr), hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
 }
 .sunset {
-    background: linear-gradient(140deg, hsla(141, 81%, 87%, 1) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 100%);
+    background: linear-gradient(var(--Gr), hsla(141, 81%, 87%, 1) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 100%);
 }
 .greenBlue{
-    background: linear-gradient(140deg, hsla(136, 82%, 72%, 1) 0%, hsla(205, 84%, 36%, 1) 100%);
+    background: linear-gradient(var(--Gr), hsla(136, 82%, 72%, 1) 0%, hsla(205, 84%, 36%, 1) 100%);
 }
 .yellowPink {
-    background: linear-gradient(140deg, hsla(58, 77%, 50%, 1) 0%, hsla(281, 95%, 52%, 1) 100%);
+    background: linear-gradient(var(--Gr), hsla(58, 77%, 50%, 1) 0%, hsla(281, 95%, 52%, 1) 100%);
 }
 /* constructing 3d dice from 2d flat planes */
 .inner.x {
@@ -188,3 +189,27 @@ body, html {
 .bottom {
     transform: rotateX(-90deg) translateZ(var(--trans));
 }
+
+/* gradiant animations */
+@property --Gr {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+@keyframes gradientBorderRotate {
+    0% {
+      --Gr: 0deg;
+    }
+    25% {
+      --Gr: 90deg;
+    }
+    50% {
+      --Gr: 180deg;
+    }
+    75% {
+      --Gr: 270deg;
+    }
+    100% {
+      --Gr: 360deg;
+    }
+  }
