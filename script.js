@@ -76,5 +76,3 @@ function rollRandom() {
 
     return random;
 }
-
-rollBtn.addEventListener('click', rollRandom);
