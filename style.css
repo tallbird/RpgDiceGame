@@ -47,7 +47,7 @@ body, html {
 }
 
 /* Dice Styles */
-.dice1, .dice2, .dice3, .dice4, .dice5, .dice6 {
+#dice1, #dice2, #dice3, #dice4, #dice5, #dice6 {
     display: inline-grid;
     position: relative;
     width: var(--diceW_H);
@@ -55,22 +55,22 @@ body, html {
     transform-style: preserve-3d;
     transition: 1s ease;
 }
-.dice1 {
+#dice1 {
     grid-area: Dice1;
 }
-.dice2 {
+#dice2 {
     grid-area: Dice2;
 }
-.dice3 {
+#dice3 {
     grid-area: Dice3;
 }
-.dice4 {
+#dice4 {
     grid-area: Dice4;
 }
-.dice5 {
+#dice5 {
     grid-area: Dice5;
 }
-.dice6 {
+#dice6 {
     grid-area: Dice6;
 }
 
@@ -96,8 +96,7 @@ body, html {
     border-radius: var(--diceBR);
     backface-visibility: hidden;
     position: absolute;
-    animation: gradientBorderRotate 3s linear infinite;
-    animation-play-state: running;
+    animation: gradientBorderRotate 2.5s linear infinite;
 }
  /* images on dice */
  .icon {
@@ -202,16 +201,10 @@ body, html {
     0% {
       --Gr: 0deg;
     }
-    25% {
-      --Gr: 90deg;
-    }
     50% {
       --Gr: 180deg;
-    }
-    75% {
-      --Gr: 270deg;
     }
     100% {
       --Gr: 360deg;
     }
-  }
+}
