@@ -47,12 +47,12 @@ document.querySelectorAll('.skillImg').forEach( item => {
         diceDiv.classList.toggle('locked');
         currentDice[diceDiv.classList[0]].toggleLocked()
         console.log(diceDiv.classList)
+        console.log(diceDiv.style.transform)
         let border = this.parentElement.children[0]
-        if (this.classList.contains('locked')) {
+        if (diceDiv.classList.contains('locked')) {
             border.style.animationPlayState = "paused";
         } else {
             border.style.animationPlayState = "running";
-            //diceDiv.style.transform = 'scale3d(1, 1, 1)';
         }
     }
 });
