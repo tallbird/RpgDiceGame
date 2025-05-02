@@ -1,6 +1,6 @@
 // need a JSON of skills / supports
 class Dice {
-    constructor(skill, resourceLayout = ['A', 'A', 'D', 'D', 'U', 'U'], number = 1, locked = false) {
+    constructor(skill, resourceLayout = [ 'D', 'D', 'A', 'A', 'U', 'U'], number = 1, locked = false) {
         this.skill = skill;
         this.resourceLayout = resourceLayout;
         this.number = number;
@@ -9,12 +9,24 @@ class Dice {
     }
 
     rollDice() {
+        this.prevRolls.push(this.number)
         this.number = Dice.randomDice();
         return this.number
     }
 
+    getResource(){
+        return this.resourceLayout[this.number -1]
+    }
+    
+
     getBounces(numOfBounces) {
-        return Dice.getBounceArray(this.prevRolls[this.prevRolls.length - 1], this.number, numOfBounces)
+        let bounces = [Dice.randomDice(Dice.setExcludeArray([this.prevRolls[this.prevRolls.length - 1]]))]
+        for (let i = 0; i < numOfBounces - 2; i++) {
+            bounces.push(Dice.randomDice(Dice.setExcludeArray([this.number, bounces[bounces.length - 1]])));
+        }
+        bounces.push(this.number)
+        console.log(bounces);
+        return bounces
     }
 
     
@@ -35,14 +47,14 @@ class Dice {
         return [1, 2, 3, 4, 5, 6].filter(v => !(excludeArray.includes(v)));
     }
 
-    static getBounceArray(prevNumber, finalNumber, numOfBounces) {
-        let bounces = [Dice.randomDice(Dice.setExcludeArray([prevNumber, finalNumber]))];
-        for (let i = 0; i < numOfBounces - 1; i++) {
-            bounces.push(Dice.randomDice(Dice.setExcludeArray([prevNumber, finalNumber, bounces[bounces.length - 1]])));
-        }
-        // console.log(bounces);
-        return bounces;
-    }
+    // static getBounceArray(prevNumber, finalNumber, numOfBounces) {
+    //     let bounces = [Dice.randomDice(Dice.setExcludeArray([prevNumber]))];
+    //     for (let i = 0; i < numOfBounces - 1; i++) {
+    //         bounces.push(Dice.randomDice(Dice.setExcludeArray([prevNumber, finalNumber, bounces[bounces.length - 1]])));
+    //     }
+    //     // console.log(bounces);
+    //     return bounces;
+    // }
 }
 
 //acts pool
