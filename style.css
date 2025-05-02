@@ -36,8 +36,8 @@ body, html {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 
-    "Dice1 Dice2 Dice3"
-    "Dice4 Dice5 Dice6";
+    "DiceBox1 DiceBox2 DiceBox3"
+    "DiceBox4 DiceBox5 DiceBox6";
     gap: 3vw;
     place-items: center;
     padding: 1.5vw;
@@ -47,7 +47,7 @@ body, html {
 }
 
 /* Dice Styles */
-#dice1, #dice2, #dice3, #dice4, #dice5, #dice6 {
+#diceBox1, #diceBox2, #diceBox3, #diceBox4, #diceBox5, #diceBox6 {
     display: inline-grid;
     position: relative;
     width: var(--diceW_H);
@@ -55,23 +55,23 @@ body, html {
     transform-style: preserve-3d;
     transition: 1s ease;
 }
-#dice1 {
-    grid-area: Dice1;
+#diceBox1 {
+    grid-area: DiceBox1;
 }
-#dice2 {
-    grid-area: Dice2;
+#diceBox2 {
+    grid-area: DiceBox2;
 }
-#dice3 {
-    grid-area: Dice3;
+#diceBox3 {
+    grid-area: DiceBox3;
 }
-#dice4 {
-    grid-area: Dice4;
+#diceBox4 {
+    grid-area: DiceBox4;
 }
-#dice5 {
-    grid-area: Dice5;
+#diceBox5 {
+    grid-area: DiceBox5;
 }
-#dice6 {
-    grid-area: Dice6;
+#diceBox6 {
+    grid-area: DiceBox6;
 }
 
 /* solid coloured background on each face */
@@ -96,7 +96,7 @@ body, html {
     border-radius: var(--diceBR);
     backface-visibility: hidden;
     position: absolute;
-    animation: gradientBorderRotate 2.5s linear infinite;
+    animation: gradientBorderRotate 2.5s linear infinite; 
 }
  /* images on dice */
  .icon {
