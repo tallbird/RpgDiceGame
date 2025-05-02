@@ -1,25 +1,12 @@
 const rollBtn = document.querySelector('.roll');
 
-// const diceBox1 = document.getElementById('diceBox1');
-// const diceBox2 = document.getElementById('diceBox2');
-// const diceBox3 = document.getElementById('diceBox3');
-// const diceBox4 = document.getElementById('diceBox4');
-// const diceBox5 = document.getElementById('diceBox5');
-// const diceBox6 = document.getElementById('diceBox6');
-
-//const playerDiceBox = [diceBox1, diceBox2, diceBox3, diceBox4, diceBox5, diceBox6]
-
 const diceBoxNames = ['diceBox1', 'diceBox2', 'diceBox3', 'diceBox4', 'diceBox5', 'diceBox6']
 playerDiceBox = diceBoxNames.map(diceBoxName => document.getElementById(diceBoxName)) 
 
-
-let lastDice = 1
 let dicePool = [new Dice('bite'), new Dice('dice1'), new Dice('dice2'), new Dice('dice3'), new Dice('dice4'), new Dice('dice5')]
 let currentDice = dicePool
 
 let resourcePool = []
-
-//let statuses = [randomDice(), randomDice(), randomDice(), randomDice(), randomDice(), randomDice()]
 
 // Animation 
 function rollDiceTransition(screenDie, number) {
@@ -45,23 +32,27 @@ function animateRoll(diceBox, dice) {
 // roll dice button
 function rollRandom() {
     currentDice.forEach((dice, i) => {
+        if (currentDice[i].locked == false){
         dice.rollDice();
-        animateRoll(playerDiceBox[i], dice);
+        animateRoll(playerDiceBox[i], dice);}
     });
-
     resourcePool = currentDice.map(d => d.getResource())
-    console.log(resourcePool);
-    
+    console.log(resourcePool); 
 }
 
 // toggle border animation on/off on dice click
 document.querySelectorAll('.skillImg').forEach( item => {
-    item.onclick = function toggleAnimation() {
+    item.onclick = function toggleLocked() {
+        let diceDiv = this.parentElement.parentElement
+        diceDiv.classList.toggle('locked');
+        currentDice[diceDiv.classList[0]].toggleLocked()
+        console.log(diceDiv.classList)
         let border = this.parentElement.children[0]
-        if (border.style.animationPlayState == "running" || border.style.animationPlayState == "") {
+        if (this.classList.contains('locked')) {
             border.style.animationPlayState = "paused";
         } else {
             border.style.animationPlayState = "running";
+            //diceDiv.style.transform = 'scale3d(1, 1, 1)';
         }
     }
 });

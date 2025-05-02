@@ -191,6 +191,10 @@ body, html {
     transform: rotateX(-90deg) translateZ(var(--trans));
 }
 
+.locked {
+    transform: scale3d(0.9, 0.9, 0.9);
+}
+
 /* gradiant animations */
 @property --Gr {
     syntax: '<angle>';

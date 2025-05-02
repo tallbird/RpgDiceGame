@@ -4,12 +4,17 @@ class Dice {
         this.skill = skill;
         this.resourceLayout = resourceLayout;
         this.number = number;
-        this.prevRolls = [6, 5]
+        this.prevRolls = [6, 5]  // this should be initialised to a random number on game start?, or this.number needs to be randomised?
         this.locked = locked;
+    }
+
+    toggleLocked() {
+        this.locked = !this.locked
     }
 
     rollDice() {
         this.prevRolls.push(this.number)
+        // console.log(this.prevRolls)
         this.number = Dice.randomDice();
         return this.number
     }
@@ -25,7 +30,6 @@ class Dice {
             bounces.push(Dice.randomDice(Dice.setExcludeArray([this.number, bounces[bounces.length - 1]])));
         }
         bounces.push(this.number)
-        console.log(bounces);
         return bounces
     }
 
@@ -33,7 +37,6 @@ class Dice {
     // pick a number from set. Default 1-6 can pass in [array of numbers] e.g [1,2,4]
     static randomDice(set = [1, 2, 3, 4, 5, 6]) {
         const random = Math.ceil(Math.random() * set.length);
-        //    console.log(set, random, set[random-1]);
         return set[random - 1];
     }
 
@@ -46,16 +49,4 @@ class Dice {
     static setExcludeArray(excludeArray) {
         return [1, 2, 3, 4, 5, 6].filter(v => !(excludeArray.includes(v)));
     }
-
-    // static getBounceArray(prevNumber, finalNumber, numOfBounces) {
-    //     let bounces = [Dice.randomDice(Dice.setExcludeArray([prevNumber]))];
-    //     for (let i = 0; i < numOfBounces - 1; i++) {
-    //         bounces.push(Dice.randomDice(Dice.setExcludeArray([prevNumber, finalNumber, bounces[bounces.length - 1]])));
-    //     }
-    //     // console.log(bounces);
-    //     return bounces;
-    // }
 }
-
-//acts pool
-//offensive / defensive / utility
