@@ -18,21 +18,8 @@ function rollDiceTransition(screenDie, number) {
         'rotateX(90deg) rotateY(0deg)',
         'rotateX(180deg) rotateY(0deg)'
     ];
-    // screenDie.style.transform = (transforms[number - 1]);
 
-    const classNamesForTurns= [
-        "turnToSide2", 
-        "turnToSide3"
-    ]
-
-    if (number > 3){
-        screenDie.classList.remove("turnToSide2")
-        screenDie.classList.add("turnToSide3")
-    }
-    else {
-        screenDie.classList.remove("turnToSide3")
-        screenDie.classList.add("turnToSide2")
-    }
+    screenDie.style.transform = (transforms[number - 1]);
 }
 
 function animateRoll(diceBox, dice) {
@@ -45,7 +32,6 @@ function animateRoll(diceBox, dice) {
 
 // roll dice button
 function rollRandom() {
-    console.log(playerDiceBox[0])
     currentDice.forEach((dice, i) => {
         if (currentDice[i].locked == false){
         dice.rollDice();
@@ -59,10 +45,8 @@ function rollRandom() {
 document.querySelectorAll('.skillImg').forEach( item => {
     item.onclick = function toggleLocked() {
         let diceDiv = this.parentElement.parentElement
-        diceDiv.classList.toggle('locked');
+        diceDiv.parentElement.classList.toggle('locked');
         currentDice[diceDiv.classList[0]].toggleLocked()
-        console.log(diceDiv.classList)
-        console.log(diceDiv.style)
         let border = this.parentElement.children[0]
         if (diceDiv.classList.contains('locked')) {
             border.style.animationPlayState = "paused";

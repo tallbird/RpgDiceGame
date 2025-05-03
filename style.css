@@ -47,6 +47,10 @@ body, html {
 }
 
 /* Dice Styles */
+.diceWrap {
+    transform-style: preserve-3d;
+    transition: 1s ease;
+}
 #diceBox1, #diceBox2, #diceBox3, #diceBox4, #diceBox5, #diceBox6 {
     display: inline-grid;
     position: relative;
@@ -190,22 +194,9 @@ body, html {
 .bottom {
     transform: rotateX(-90deg) translateZ(var(--trans));
 }
-.turnToSide2 {
-    transform:rotateX(-90deg) rotateY(0deg)
-}
-.turnToSide3 {
-    transform:rotateX(0deg) rotateY(90deg)
-}
 .locked {
     transform: scale3d(0.9, 0.9, 0.9);
 }
-.turnToSide2.locked {
-    transform:rotateX(-90deg) rotateY(0deg) scale3d(0.9, 0.9, 0.9);
-}
-.turnToSide3.locked {
-    transform:rotateX(0deg) rotateY(90deg) scale3d(0.9, 0.9, 0.9);
-}
-
 /* gradiant animations */
 @property --Gr {
     syntax: '<angle>';
