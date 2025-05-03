@@ -48,7 +48,7 @@ document.querySelectorAll('.skillImg').forEach( item => {
         diceDiv.parentElement.classList.toggle('locked');
         currentDice[diceDiv.classList[0]].toggleLocked()
         let border = this.parentElement.children[0]
-        if (diceDiv.classList.contains('locked')) {
+        if (diceDiv.parentElement.classList.contains('locked')) {
             border.style.animationPlayState = "paused";
         } else {
             border.style.animationPlayState = "running";
