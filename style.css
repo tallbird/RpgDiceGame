@@ -20,7 +20,7 @@ body, html {
     overflow: hidden;
     background: linear-gradient(145deg, #2c0477, #032e20, #000000, black);
     display: grid;
-    grid-template-rows: auto 45vw 67vw;
+    grid-template-rows: auto 50vw 70vw;
     grid-template-areas: 
     "Player"
     "NPCs"
@@ -33,25 +33,30 @@ body, html {
     height: 60vw;
     width: 100vw;
 }
-#playerHPbar, #playerHPbar::after {
-    display: block;
-    content: "";
+#playerHP {
+    position: absolute;
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin-left: 5vw;
+    top: 3vw;
     height: 6vw;
     width: 90vw;
+    z-index: 2;
+}
+#playerHPbar, .playerHPbarBackground {
+    position: absolute;
+    height: 6vw;
     border-radius: 1vw;
 }
 #playerHPbar {
-    position: absolute;
-    background-color: #58c043;
-    margin-left: 5vw;
-    top: 3vw;
+    background: linear-gradient(145deg, #07c527, #0cc5b6);
     width: 65vw;
 }
-#playerHPbar::after {
-    content: "";
-    outline: 0.75vw solid rgb(255, 255, 255);
-    outline-offset: -0.5vw;
+.playerHPbarBackground {
     width: 90vw;
+    background-color: #4a5747c4;
+    z-index: -1;
 }
 #player img {
     position: absolute;
@@ -66,54 +71,92 @@ body, html {
     grid-area: NPCs;
     display: grid;
     position: absolute;
-    height: 45vw;
+    height: 50vw;
+    margin-left: 5vw;
+    grid-template-columns: 20vw 20vw 20vw 20vw;
+    grid-template-rows: 42vw 4vw;
+    grid-template-areas: 
+    "NPC1img NPC2img NPC3img NPC4img"
+    "NPC1bar NPC2bar NPC3bar NPC4bar";
+    gap: 3.5vw;
+    z-index: 2;
 }
 #NPCs img {
     position: absolute;
-    margin-left: 5vw;
-    bottom: 7vw;
-    width: 90vw;
-    z-index: 5;
+    bottom: 3vw;
+    scale: 85%;
     filter: invert(100%) drop-shadow(1vw 1vw 0.5vw black);
 }
-#NPCsHPbar1, #NPCsHPbar1::after, #NPCsHPbar2, #NPCsHPbar2::after, #NPCsHPbar3, #NPCsHPbar3::after, #NPCsHPbar4, #NPCsHPbar4::after {
+.Healer {
+    margin-left: -2vw;
+}
+.Barbarian {
+    margin-left: -10vw;
+}
+.Archer {
+    margin-left: -4vw;
+}
+#NPC1img {
+    grid-area: NPC1img;
+}
+#NPC2img {
+    grid-area: NPC2img;
+}
+#NPC3img {
+    grid-area: NPC3img;
+}
+#NPC4img {
+    grid-area: NPC4img;
+}
+#NPC1bar, #NPC2bar, #NPC3bar, #NPC4bar {
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+#NPC1bar {
+    grid-area: NPC1bar;
+}
+#NPC2bar {
+    grid-area: NPC2bar;
+}
+#NPC3bar {
+    grid-area: NPC3bar;
+}
+#NPC4bar {
+    grid-area: NPC4bar;
+}
+.NPCsHPBar {
     position: absolute;
     height: 4vw;
-    width: 15vw;
     border-radius: 1vw;
+    max-width: 20vw;
+    background: linear-gradient(145deg, #07c527, #0cc5b6);
 }
-#NPCsHPbar1, #NPCsHPbar2, #NPCsHPbar3, #NPCsHPbar4 {
-    margin-left: 8vw;
-    margin-bottom: 0.5vw;
-    background-color: #58c043;
-    bottom: 0;
-}
-#NPCsHPbar1::after, #NPCsHPbar2::after, #NPCsHPbar3::after, #NPCsHPbar4::after {
-    content: "";
-    outline: 0.75vw solid rgb(255, 255, 255);
-    outline-offset: -0.5vw;
-    width: 15vw;
+.NPCsHPbarBackground {
+    position: absolute;
+    height: 4vw;
+    border-radius: 1vw;
+    width: 20vw;
+    background-color: #4a5747c4;
+    z-index: -1;
 }
 #NPCsHPbar1 {
-    width: 10vw;
+    width: 18vw;
 }
 #NPCsHPbar2 {
-    left: 24vw;
-    width: 15vw;
-}
-#NPCsHPbar3 {
-    left: 47vw;
     width: 5vw;
 }
+#NPCsHPbar3 {
+    width: 10vw;
+}
 #NPCsHPbar4 {
-    left: 70vw;
     width: 15vw;
 }
 #container {
     grid-area: DiceBox;
     display: grid;
     position: absolute;
-    width: 93vw;
+    width: 92vw;
     height: 60vw;
     margin: 2vw;
     grid-template-columns: 1fr 1fr 1fr;
@@ -121,9 +164,10 @@ body, html {
     grid-template-areas: 
     "DiceBox1 DiceBox2 DiceBox3"
     "DiceBox4 DiceBox5 DiceBox6";
-    gap: 3vw;
+    gap: 2vw;
     place-items: center;
-    padding: 1.5vw;
+    padding: 2vw;
+    padding-top: 3.5vw;
     border-radius: var(--diceBR);
     background: var(--transDark);
     box-shadow:inset 0 0 30px var(--transLight);
