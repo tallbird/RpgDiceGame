@@ -84,7 +84,8 @@ body, html {
   }
 }
 .avatar{
-    background-color: #050c00;
+    background: #120a26;
+background: radial-gradient(ellipse,rgba(18, 10, 38, 1) 1%, rgba(16, 8, 28, 1) 65%, rgba(13, 5, 26, 1) 100%);
     z-index: 2;
 }
 .cerberusBackground {
@@ -93,11 +94,9 @@ body, html {
     mask-size: contain;
 }
 .cerberus {
-    mask: url(images/cerberus.png);
+    mask: url(images/cerberus_greyscale.png);
     mask-repeat: no-repeat;
-    mask-size: 94.5vw;
-    margin-left: 3vw;
-    margin-top: 10.5vw;
+    mask-size: contain;
 }
 #NPCs {
     grid-area: NPCs;
