@@ -58,14 +58,46 @@ body, html {
     background-color: #4a5747c4;
     z-index: -1;
 }
-#player img {
+.background, .avatar {
     position: absolute;
     margin-top: 10vw;
     margin-left: 2.5vw;
     width: 95vw;
-    z-index: 1;
-    filter: drop-shadow(0.5vw 0.5vw rgba(35, 87, 100, 0.75)) drop-shadow(0.5vw -0.25vw rgba(0, 204, 255, 0.75))
-    drop-shadow(-0.25vw 0.5vw rgba(0, 204, 255, 0.75)) drop-shadow(-0.25vw -0.25vw rgba(223, 248, 255, 0.75));
+    height: 100vw;
+}
+.background {
+  background: linear-gradient(76deg,#296411,#95df6a,#70e214,#548299);
+  background-size: 240% 240%;
+  animation: gradient-animation 8s ease infinite;
+  z-index: 1;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.avatar{
+    background-color: #050c00;
+    z-index: 2;
+}
+.cerberusBackground {
+    mask-image: url(images/cerberus_background.png);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+}
+.cerberus {
+    mask: url(images/cerberus.png);
+    mask-repeat: no-repeat;
+    mask-size: 94.5vw;
+    margin-left: 3vw;
+    margin-top: 10.5vw;
 }
 #NPCs {
     grid-area: NPCs;
