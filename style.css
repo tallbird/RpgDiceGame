@@ -58,7 +58,7 @@ body, html {
     background-color: #4a5747c4;
     z-index: -1;
 }
-.background, .avatar {
+.background, .avatar, .outline {
     position: absolute;
     margin-top: 10vw;
     margin-left: 2.5vw;
@@ -85,8 +85,17 @@ body, html {
 }
 .avatar{
     background: #120a26;
-background: radial-gradient(ellipse,rgba(18, 10, 38, 1) 1%, rgba(16, 8, 28, 1) 65%, rgba(13, 5, 26, 1) 100%);
+    background: radial-gradient(ellipse,rgba(18, 10, 38, 1) 1%, rgba(16, 8, 28, 1) 65%, rgba(13, 5, 26, 1) 100%);
     z-index: 2;
+}
+.outline {
+    background: #3afafa;
+    z-index: 3;
+}
+.cerberusOutline {
+    mask-image: url(images/cerberus_outline.png);
+    mask-repeat: no-repeat;
+    mask-size: contain;
 }
 .cerberusBackground {
     mask-image: url(images/cerberus_background.png);
